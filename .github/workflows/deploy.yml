@@ -1,0 +1,20 @@
+name: Deploy Static Website
+
+on:
+  push:
+    branches:
+      - main  # Գործարկվում է միայն main ճյուղում փոփոխություն կատարելուց հետո
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Տեղակայման նպատակով ստեղծված ճյուղ
+          folder: .          # Ստատիկ կայքի ֆայլերը (արմատային պանակը)
